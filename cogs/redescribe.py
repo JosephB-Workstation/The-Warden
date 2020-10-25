@@ -8,7 +8,7 @@ class Redescribe(commands.Cog):
 
     def descriptionChecker(self, ctx, channel, description):
         olddesc = " "
-        if isinstance(channel, TextChannel):
+        if isinstance(channel, discord.TextChannel):
             olddesc = channel.topic
         elif channel == None:
             olddesc = ctx.channel.topic
@@ -25,11 +25,11 @@ class Redescribe(commands.Cog):
         if Redescribe.descriptionChecker(self, ctx, channel, description) != True:
             await ctx.send("New description matches old description!")
         elif int(id) == 1:
-            await ctx.channel.edit(topic=a)
+            await ctx.channel.edit(topic=description)
             await ctx.send('Channel topic changed!')
         elif channel != None:
             if isinstance(channel, discord.TextChannel):
-                await channel.edit(topic=a)
+                await channel.edit(topic=description)
                 await ctx.send(f'{channel.name} has had it\'s topic changed!')
             else:
                 await ctx.send("Voice channels do not have topics to edit!")
@@ -39,12 +39,8 @@ class Redescribe(commands.Cog):
     @commands.command()
     async def ctopic(self, ctx, description, targetid: int=1):  #limited to 2 per channel per 10 minutes
         newdesc = str(description)
-        olddesc = str(ctx.channel.topic)
         id = str(targetid)
-        if olddesc == newdesc:
-            await ctx.send(f'Sorry, but that is already the channel\'s description!')
-        else:
-             await asyncio.wait_for(Redescribe.describechannel(self, ctx, newdesc, id), 1)
+        await asyncio.wait_for(Redescribe.describechannel(self, ctx, newdesc, id), 1)
 
     @ctopic.error
     async def ctopic_error(self, ctx, error):

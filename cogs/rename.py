@@ -30,23 +30,23 @@ class Rename(commands.Cog):
         if int(id) == 1:
             if Rename.nameChecker(self, ctx, channel, lowername, uppername):
                 await ctx.channel.edit(name=lowername)
-                await ctx.send(f'The channel was renamed to {lowername}!')
+                await ctx.send(f'The channel was renamed to **{lowername}**!')
             else:
-                await ctx.send(f'Sorry, but {lowername} is already the channel\'s name!')
+                await ctx.send(f'Sorry, but **{lowername}** is already the channel\'s name!')
         elif channel != None:
             if isinstance(channel, discord.TextChannel):
                 if Rename.nameChecker(self, ctx, channel, lowername, uppername):
-                    await ctx.channel.edit(name=lowername)
-                    await ctx.send(f'The channel was renamed to {lowername}!')
+                    await ctx.send(f'The channel **{channel.name}** was renamed to **{lowername}**!')
+                    await channel.edit(name=lowername)
 
                 else:
-                    await ctx.send(f'Sorry, but {lowername} is already the channel\'s name!')
+                    await ctx.send(f'Sorry, but **{lowername}** is already the channel\'s name!')
             else:
                 if Rename.nameChecker(self, ctx, channel, lowername, uppername):
+                    await ctx.send(f'The channel **{channel.name}** was renamed to **{uppername}**!')
                     await channel.edit(name=uppername)
-                    await ctx.send(f'The channel was renamed to {uppername}!')
                 else:
-                    await ctx.send(f'Sorry, but {uppername} is already the channel\'s name!')
+                    await ctx.send(f'Sorry, but **{uppername}** is already the channel\'s name!')
         else:
             await ctx.send("Error: Channel ID not recognized.")
 

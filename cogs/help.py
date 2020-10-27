@@ -14,6 +14,7 @@ class Help(commands.Cog):
             msg.add_field(name="w.cname", value="<\"Name in quotes\"> <Optional channel ID>", inline=False)
             msg.add_field(name="w.ctopic", value="<\"Topic in quotes\"> <Optional channel ID>", inline=False)
             msg.add_field(name="w.cslow", value="<Time in seconds> <Optional channel ID>", inline=False)
+            msg.add_field(name="w.bitrate", value="<Bitrate between 8-96 in kbps> <Mandatory channel ID>")
             msg.add_field(name="w.lock", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.unlock", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.delinv", value="<No Arguments>", inline=False)
@@ -35,6 +36,12 @@ class Help(commands.Cog):
             msg.add_field(name="Description:", value="Changes text channel slow mode timer.", inline=False)
             msg.add_field(name="Time:", value="The time in seconds you would like slow mode to be applied for.", inline=False)
             msg.add_field(name="Optional ID:", value="Channel ID is the channel id of the channel you want to change. If that is not set, it will change the slow mode of the current channel.", inline=False)
+        elif (filter == "w.bitrate" or filter == "bitrate"):
+            msg = discord.Embed(title="Help - bitrate command", color=0x4e5d94)
+            msg.add_field(name="w.bitrate", value="<Bitrate between 8-96 in kbps> <Mandatory channel ID>", inline=False)
+            msg.add_field(name="Description: ", value="Changes a voice channel's bitrate, effecting audio quality and bandwith usage.", inline=False)
+            msg.add_field(name="Bitrate: ", value="A value between 8 and 96 that represents the bitrate you would like your voice channel to have in kbps.", inline=False)
+            msg.add_field(name="Channel ID: ", value="Identifies the voice channel you'd like the bot to edit. The command will fail without it.")
         elif (filter == "w.lock" or filter == "lock"):
             msg = discord.Embed(title="Help - lock command", color=0x4e5d94)
             msg.add_field(name="w.lock", value="<Optional channel ID>", inline=False)

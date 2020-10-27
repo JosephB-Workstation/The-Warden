@@ -16,7 +16,7 @@ class Slowmode(commands.Cog):
             channel = self.client.get_channel(targetid)
         if isinstance(channel, discord.TextChannel):
             await channel.edit(slowmode_delay=seconds)
-            await ctx.send(f'{channel.name}\'s slow mode timer was set to {seconds} seconds!')
+            await ctx.send(f'{channel.name}\'s slow mode timer was set to **{seconds}** seconds!')
         elif isinstance(channel, discord.VoiceChannel):
             await ctx.send('Voice channels do not have a slow mode to edit!')
         else:

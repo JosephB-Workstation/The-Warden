@@ -24,10 +24,10 @@ def readtoken():
     keygrab.close()
     return key
 
-@client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.CommandNotFound):
-        await ctx.send('Error: Command Not found! w.help for a list of commands!')
+# @client.event
+# async def on_command_error(ctx, error):
+#     if isinstance(error, commands.CommandNotFound):
+#         await ctx.send('Error: Command Not found! w.help for a list of commands!')
 
 
 file = os.path.dirname(os.path.abspath(__file__))

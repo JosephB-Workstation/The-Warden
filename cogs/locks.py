@@ -17,10 +17,10 @@ class Locks(commands.Cog):
             channel = self.client.get_channel(targetid)
         if isinstance(channel, discord.TextChannel):
             await channel.set_permissions(ctx.guild.default_role, send_messages=False)
-            await ctx.send(f'{channel.name} has been locked!')
+            await ctx.send(f'**{channel.name}** has been locked!')
         elif isinstance(channel, discord.VoiceChannel):
             await channel.set_permissions(ctx.guild.default_role, speak=False)
-            await ctx.send(f'{channel.name} has been locked!')
+            await ctx.send(f'**{channel.name}** has been locked!')
         else:
             await ctx.send('Channel not found!')
 
@@ -35,10 +35,10 @@ class Locks(commands.Cog):
             channel = self.client.get_channel(targetid)
         if isinstance(channel, discord.TextChannel):
             await channel.set_permissions(ctx.guild.default_role, send_messages=True)
-            await ctx.send(f'{channel.name} has been unlocked!')
+            await ctx.send(f'**{channel.name}** has been unlocked!')
         elif isinstance(channel, discord.VoiceChannel):
             await channel.set_permissions(ctx.guild.default_role, speak=True)
-            await ctx.send(f'{channel.name} has been unlocked!')
+            await ctx.send(f'**{channel.name}** has been unlocked!')
         else:
             await ctx.send('Channel not found!')
 

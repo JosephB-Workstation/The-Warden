@@ -30,7 +30,7 @@ class Redescribe(commands.Cog):
         elif channel != None:
             if isinstance(channel, discord.TextChannel):
                 await channel.edit(topic=description)
-                await ctx.send(f'{channel.name} has had it\'s topic changed!')
+                await ctx.send(f'**{channel.name}** has had it\'s topic changed!')
             else:
                 await ctx.send("Voice channels do not have topics to edit!")
         else:

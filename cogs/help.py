@@ -14,6 +14,7 @@ class Help(commands.Cog):
             msg.add_field(name="w.cname", value="<\"Name in quotes\"> <Optional channel ID>", inline=False)
             msg.add_field(name="w.ctopic", value="<\"Topic in quotes\"> <Optional channel ID>", inline=False)
             msg.add_field(name="w.cslow", value="<Time in seconds> <Optional channel ID>", inline=False)
+            msg.add_field(name="w.nsfw", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.bitrate", value="<Bitrate between 8-96 in kbps> <Mandatory channel ID>", inline=False)
             msg.add_field(name="w.userlimit", value="<User count between 0-99> <Mandatory channel ID>", inline=False)
             msg.add_field(name="w.lock", value="<Optional channel ID>", inline=False)
@@ -36,6 +37,11 @@ class Help(commands.Cog):
             msg.add_field(name="w.cslow", value="<Time in seconds> <Optional channel ID>", inline=False)
             msg.add_field(name="Description:", value="Changes text channel slow mode timer.", inline=False)
             msg.add_field(name="Time:", value="The time in seconds you would like slow mode to be applied for.", inline=False)
+            msg.add_field(name="Optional ID:", value="Channel ID is the channel id of the channel you want to change. If that is not set, it will change the slow mode of the current channel.", inline=False)
+        elif (filter == "w.nsfw" or filter == "nsfw"):
+            msg = discord.Embed(title="Help - cslow command", color=0x4e5d94)
+            msg.add_field(name="w.nsfw", value="<Optional channel ID>", inline=False)
+            msg.add_field(name="Description: ", value="Toggles NSFW mode on text channels", inline=False)
             msg.add_field(name="Optional ID:", value="Channel ID is the channel id of the channel you want to change. If that is not set, it will change the slow mode of the current channel.", inline=False)
         elif (filter == "w.bitrate" or filter == "bitrate"):
             msg = discord.Embed(title="Help - bitrate command", color=0x4e5d94)

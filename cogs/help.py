@@ -14,7 +14,8 @@ class Help(commands.Cog):
             msg.add_field(name="w.cname", value="<\"Name in quotes\"> <Optional channel ID>", inline=False)
             msg.add_field(name="w.ctopic", value="<\"Topic in quotes\"> <Optional channel ID>", inline=False)
             msg.add_field(name="w.cslow", value="<Time in seconds> <Optional channel ID>", inline=False)
-            msg.add_field(name="w.bitrate", value="<Bitrate between 8-96 in kbps> <Mandatory channel ID>")
+            msg.add_field(name="w.bitrate", value="<Bitrate between 8-96 in kbps> <Mandatory channel ID>", inline=False)
+            msg.add_field(name="w.userlimit", value="<User count between 0-99> <Mandatory channel ID>", inline=False)
             msg.add_field(name="w.lock", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.unlock", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.delinv", value="<No Arguments>", inline=False)
@@ -41,6 +42,12 @@ class Help(commands.Cog):
             msg.add_field(name="w.bitrate", value="<Bitrate between 8-96 in kbps> <Mandatory channel ID>", inline=False)
             msg.add_field(name="Description: ", value="Changes a voice channel's bitrate, effecting audio quality and bandwith usage.", inline=False)
             msg.add_field(name="Bitrate: ", value="A value between 8 and 96 that represents the bitrate you would like your voice channel to have in kbps.", inline=False)
+            msg.add_field(name="Channel ID: ", value="Identifies the voice channel you'd like the bot to edit. The command will fail without it.")
+        elif (filter == "w.userlimit" or filter == "userlimit"):
+            msg = discord.Embed(title="Help - userlimit command", color=0x4e5d94)
+            msg.add_field(name="w.userlimit", value="<User count between 0-99> <Mandatory channel ID>", inline=False)
+            msg.add_field(name="Description: ", value="Changes the user limit of a voice channel", inline=False)
+            msg.add_field(name="Bitrate: ", value="A value between 0 and 99 that represents the maximum amount of people you want in a voice channel, 0 being unlimited.", inline=False)
             msg.add_field(name="Channel ID: ", value="Identifies the voice channel you'd like the bot to edit. The command will fail without it.")
         elif (filter == "w.lock" or filter == "lock"):
             msg = discord.Embed(title="Help - lock command", color=0x4e5d94)

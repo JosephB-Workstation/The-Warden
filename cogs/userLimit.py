@@ -16,7 +16,18 @@ class Userlimit(commands.Cog):
             await self.client.wait_until_ready()
             channel = self.client.get_channel(targetid)
 
-        if isinstance(channel, discord.VoiceChannel):
+        if(channel == None):
+            await ctx.send("Channel not found.")
+            return
+
+        permission = channel.permissions_for(ctx.author)
+        permission2 = channel.permissions_for(ctx.guild.me)
+
+        if permission.manage_channels != True:
+            await ctx.send('Error: You do not have the required permission: *Manage channels* for this command!')
+        elif permission2.manage_channels != True:
+            await ctx.send('Error: I not have the required permission: *Manage channels* for this command!')
+        elif isinstance(channel, discord.VoiceChannel):
             if limit > -1 or limit < 100:
                 await channel.edit(user_limit=limit)
                 await ctx.send(f'**{channel.name}\'s** user limit has been set to {limit}')
@@ -25,6 +36,6 @@ class Userlimit(commands.Cog):
         else:
             await ctx.send("Error: Sorry, but this command only works on voice channels!")
 
-            
+
 def setup(client):
     client.add_cog(Userlimit(client))

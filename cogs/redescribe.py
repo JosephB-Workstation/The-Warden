@@ -20,21 +20,33 @@ class Redescribe(commands.Cog):
             return True
 
     async def describechannel(self, ctx, description, id: int):
-        await self.client.wait_until_ready()
-        channel = self.client.get_channel(int(id))
-        if Redescribe.descriptionChecker(self, ctx, channel, description) != True:
+        channel = None
+        if int(id) == 1:
+            channel = ctx.channel
+        else:
+            await self.client.wait_until_ready()
+            channel = self.client.get_channel(int(id))
+
+        if(channel == None):
+            await ctx.send("Channel not found.")
+            return
+
+        permission = channel.permissions_for(ctx.author)
+        permission2 = channel.permissions_for(ctx.guild.me)
+
+        if permission.manage_channels != True:
+            await ctx.send('Error: You do not have the required permission: *Manage channels* for this command!')
+        elif permission2.manage_channels != True:
+            await ctx.send('Error: I not have the required permission: *Manage channels* for this command!')
+        elif Redescribe.descriptionChecker(self, ctx, channel, description) != True:
             await ctx.send("New description matches old description!")
-        elif int(id) == 1:
-            await ctx.channel.edit(topic=description)
-            await ctx.send('Channel topic changed!')
         elif channel != None:
             if isinstance(channel, discord.TextChannel):
                 await channel.edit(topic=description)
                 await ctx.send(f'**{channel.name}** has had it\'s topic changed!')
             else:
                 await ctx.send("Voice channels do not have topics to edit!")
-        else:
-            await ctx.send("Error: Channel ID not recognized.")
+
 
     @commands.command()
     async def ctopic(self, ctx, description, targetid: int=1):  #limited to 2 per channel per 10 minutes

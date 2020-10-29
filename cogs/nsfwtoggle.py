@@ -15,7 +15,18 @@ class NSFW(commands.Cog):
             await self.client.wait_until_ready()
             channel = self.client.get_channel(targetid)
 
-        if isinstance(channel, discord.TextChannel):
+        if(channel == None):
+            await ctx.send("Channel not found.")
+            return
+
+        permission = channel.permissions_for(ctx.author)
+        permission2 = channel.permissions_for(ctx.guild.me)
+
+        if permission.manage_channels != True:
+            await ctx.send('Error: You do not have the required permission: *Manage channels* for this command!')
+        elif permission2.manage_channels != True:
+            await ctx.send('Error: I not have the required permission: *Manage channels* for this command!')
+        elif isinstance(channel, discord.TextChannel):
             toggle = channel.nsfw
             if (toggle):
                 await channel.edit(nsfw=False)

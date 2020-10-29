@@ -25,14 +25,24 @@ class Rename(commands.Cog):
 
 
     async def renamechannel(self, ctx, lowername, id:int, uppername):
-        await self.client.wait_until_ready()
-        channel = self.client.get_channel(int(id))
+        channel = None
         if int(id) == 1:
-            if Rename.nameChecker(self, ctx, channel, lowername, uppername):
-                await ctx.channel.edit(name=lowername)
-                await ctx.send(f'The channel was renamed to **{lowername}**!')
-            else:
-                await ctx.send(f'Sorry, but **{lowername}** is already the channel\'s name!')
+            channel = ctx.channel
+        else:
+            await self.client.wait_until_ready()
+            channel = self.client.get_channel(int(id))
+
+        if(channel == None):
+            await ctx.send("Channel not found.")
+            return
+
+        permission = channel.permissions_for(ctx.author)
+        permission2 = channel.permissions_for(ctx.guild.me)
+
+        if permission.manage_channels != True:
+            await ctx.send('Error: You do not have the required permission: *Manage channels* for this command!')
+        elif permission2.manage_channels != True:
+            await ctx.send('Error: I not have the required permission: *Manage channels* for this command!')
         elif channel != None:
             if isinstance(channel, discord.TextChannel):
                 if Rename.nameChecker(self, ctx, channel, lowername, uppername):
@@ -47,8 +57,6 @@ class Rename(commands.Cog):
                     await channel.edit(name=uppername)
                 else:
                     await ctx.send(f'Sorry, but **{uppername}** is already the channel\'s name!')
-        else:
-            await ctx.send("Error: Channel ID not recognized.")
 
     @commands.command()
     async def cname(self, ctx, name, targetid: int=1):  #limited to 2 per channel per 10 minutes

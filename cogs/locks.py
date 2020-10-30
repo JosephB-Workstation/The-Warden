@@ -72,20 +72,20 @@ class Locks(commands.Cog):
             await ctx.send(f'**{channel.name}** has been unlocked!')
         else:
             await ctx.send('Channel not found!')
-    #
-    # @lock.error
-    # async def lock_error(self, ctx, error):
-    #     if isinstance(error, commands.CommandInvokeError):
-    #         await ctx.send('Error: Ratelimit has been reached, apologies for the inconvienence, please try again in a few minutes')
-    #     if isinstance(error, commands.BadArgument):
-    #         await ctx.send('Error: Invalid channel ID')
-    #
-    # @unlock.error
-    # async def unlock_error(self, ctx, error):
-    #     if isinstance(error, commands.CommandInvokeError):
-    #         await ctx.send('Error: Ratelimit has been reached, apologies for the inconvienence, please try again in a few minutes')
-    #     if isinstance(error, commands.BadArgument):
-    #         await ctx.send('Error: Invalid channel ID')
+    
+    @lock.error
+    async def lock_error(self, ctx, error):
+        if isinstance(error, commands.CommandInvokeError):
+            await ctx.send('Error: Ratelimit has been reached, apologies for the inconvienence, please try again in a few minutes')
+        if isinstance(error, commands.BadArgument):
+            await ctx.send('Error: Invalid channel ID')
+
+    @unlock.error
+    async def unlock_error(self, ctx, error):
+        if isinstance(error, commands.CommandInvokeError):
+            await ctx.send('Error: Ratelimit has been reached, apologies for the inconvienence, please try again in a few minutes')
+        if isinstance(error, commands.BadArgument):
+            await ctx.send('Error: Invalid channel ID')
 
 
 def setup(client):

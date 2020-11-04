@@ -15,6 +15,7 @@ class Help(commands.Cog):
             msg.add_field(name="w.ctopic", value="<\"Topic in quotes\"> <Optional channel ID>", inline=False)
             msg.add_field(name="w.cslow", value="<Time in seconds> <Optional channel ID>", inline=False)
             msg.add_field(name="w.nsfw", value="<Optional channel ID>", inline=False)
+            msg.add_field(name="w.clear", value="<Amount of messages> <Optional Channel ID>", inline=False)
             msg.add_field(name="w.bitrate", value="<Bitrate between 8-96 in kbps> <Mandatory channel ID>", inline=False)
             msg.add_field(name="w.userlimit", value="<User count between 0-99> <Mandatory channel ID>", inline=False)
             msg.add_field(name="w.lock", value="<Optional channel ID>", inline=False)
@@ -46,6 +47,13 @@ class Help(commands.Cog):
             msg.add_field(name="w.nsfw", value="<Optional channel ID>", inline=False)
             msg.add_field(name="Description: ", value="Toggles NSFW mode on text channels", inline=False)
             msg.add_field(name="Permissions Needed: ", value="Manage Channel", inline=False)
+            msg.add_field(name="Optional ID:", value="Channel ID is the channel id of the channel you want to change. If that is not set, it will change the slow mode of the current channel.", inline=False)
+        elif (filter == "w.clear" or filter == "clear"):
+            msg = discord.Embed(title="Help - clear command", color=0x4e5d94)
+            msg.add_field(name="w.clear", value="<Amount of messages> <Optional Channel ID>", inline=False)
+            msg.add_field(name="Description:", value="Mass clears messages. Default will attempt to clear 500", inline=False)
+            msg.add_field(name="Permissions Needed: ", value="Manage Messages and Read Message History", inline=False)
+            msg.add_field(name="Amount:", value="The number of messages you'd like to clear from your list.", inline=False)
             msg.add_field(name="Optional ID:", value="Channel ID is the channel id of the channel you want to change. If that is not set, it will change the slow mode of the current channel.", inline=False)
         elif (filter == "w.bitrate" or filter == "bitrate"):
             msg = discord.Embed(title="Help - bitrate command", color=0x4e5d94)

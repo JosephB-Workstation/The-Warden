@@ -64,7 +64,7 @@ class Rename(commands.Cog):
         id = str(targetid)
         lowername = lowername.replace(' ', '-')
         lowername = lowername.lower()
-        await asyncio.wait_for(Rename.renamechannel(self, ctx, lowername, id, name), 1)
+        await asyncio.wait_for(Rename.renamechannel(self, ctx, lowername, id, name), 3)
 
     @cname.error
     async def cname_error(self, ctx, error):

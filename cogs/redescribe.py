@@ -52,7 +52,7 @@ class Redescribe(commands.Cog):
     async def ctopic(self, ctx, description, targetid: int=1):  #limited to 2 per channel per 10 minutes
         newdesc = str(description)
         id = str(targetid)
-        await asyncio.wait_for(Redescribe.describechannel(self, ctx, newdesc, id), 1)
+        await asyncio.wait_for(Redescribe.describechannel(self, ctx, newdesc, id), 3)
 
     @ctopic.error
     async def ctopic_error(self, ctx, error):

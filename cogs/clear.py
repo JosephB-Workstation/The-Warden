@@ -36,12 +36,12 @@ class Clear(commands.Cog):
             while (counter > 0):
                 if counter >= 100:
                     messages = await channel.history(limit=100).flatten()
+                    counter -= len(messages)
+                    delamount += len(messages)
                     if len(messages) == 0:
                         amount = amount - counter
                         counter = 0
                     await channel.delete_messages(messages)
-                    counter -= 100
-                    delamount +=100
                 else:
                     messages = await channel.history(limit=counter).flatten()
                     delamount += len(messages)

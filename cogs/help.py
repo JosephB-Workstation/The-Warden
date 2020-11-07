@@ -34,6 +34,21 @@ class Help(commands.Cog):
             msg.add_field(name="w.delinv", value="<No Arguments>", inline=False)
             msg.add_field(name="w.cverify", value="<VerificationLevel>", inline=False)
             msg.add_field(name="w.cfilter", value="<FilterLevel>", inline=False)
+            msg.add_field(name="w.csname", value="<New Server Name>", inline=False)
+            msg.add_field(name="w.cregion", value="<New Voice Region>", inline=False)
+        elif (filter == "w.csname" or filter =="csname"):
+            msg = discord.Embed(title="Help - csname command", color=0x4e5d94)
+            msg.add_field(name="w.csname", value="<New Server Name>", inline=False)
+            msg.add_field(name="Description:", value="Changes the name of the server", inline=False)
+            msg.add_field(name="Permissions Needed: ", value="Manage Server", inline=False)
+            msg.add_field(name="Name:", value="The new name for the server.", inline=False)
+        elif (filter == "w.cregion" or filter =="cregion"):
+            msg = discord.Embed(title="Help - cregion command", color=0x4e5d94)
+            msg.add_field(name="w.cregion", value="<New Server Region>", inline=False)
+            msg.add_field(name="Description:", value="Changes the voice region of the server", inline=False)
+            msg.add_field(name="Permissions Needed: ", value="Manage Server", inline=False)
+            msg.add_field(name="Region:", value="The voice region for the server.", inline=False)
+            msg.add_field(name="Valid Regions:", value="us_west, us_south, us_east, us_central, sydney, south_korea, southafrica, singapore, russia, london, japan, india, hongkong, frankfurt, europe, eu_west, eu_central, dubai, brazil, amsterdam", inline=False)
         elif (filter == "w.webhooks" or filter == "webhooks"):
             msg = discord.Embed(title="Help - webhooks command", color=0x4e5d94)
             msg.add_field(name="w.webhooks", value="<Optional Channel ID>", inline=False)

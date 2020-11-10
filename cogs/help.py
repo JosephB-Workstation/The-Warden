@@ -74,7 +74,7 @@ class Help(commands.Cog):
             msg.add_field(name="Description:", value="Changes the necessary verification level of your server.", inline=False)
             msg.add_field(name="Permissions Needed: ", value="Manage Server", inline=False)
             msg.add_field(name="Level:", value="The level of verification you want to lock chat messages on the server behind", inline=False)
-            msg.add_field(name="Valid values:", value="none, low, medium, high, table_flip, extreme, double_table_flip, or very_high")
+            msg.add_field(name="Valid values:", value="none, low, medium, high, table_flip, extreme, double_table_flip, very_high, or highest.")
         elif (filter == "w.cfilter" or filter == "cfilter"):
             msg = discord.Embed(title="Help - cfilter command", color=0x4e5d94)
             msg.add_field(name="w.cfilter", value="<FilterLevel>", inline=False)

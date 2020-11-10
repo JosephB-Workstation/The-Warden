@@ -13,7 +13,7 @@ class ContentFilter(commands.Cog):
         guild = ctx.guild
         if filterLevel == "disabled" or filterLevel == "no_role" or filterLevel == "all_members":
             await guild.edit(explicit_content_filter =discord.ContentFilter[filterLevel])
-            await ctx.send(f"Guild content filter set to {filterLevel}!")
+            await ctx.send(f"Guild content filter set to **{filterLevel}**!")
         else:
             await ctx.send("Invalid content filter! See \"w.help cfilter\" for valid entries!")
 

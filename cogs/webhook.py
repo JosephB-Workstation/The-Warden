@@ -30,13 +30,52 @@ class Webhooks(commands.Cog):
         elif permission2.manage_webhooks != True:
             await ctx.send('Error: I not have the required permission: *Manage webhooks* for this command!')
         elif isinstance(channel, discord.TextChannel):
-            await ctx.send(f"List of webhooks in {channel.name}:")
+            msg = None
             hooks = await channel.webhooks()
             if len(hooks) == 0:
-                await ctx.send("No webhooks!")
+                msg = discord.Embed(title=f"Error!", description=f"No webhooks in text channel {channel.name}", color=0x8a0707)
             else:
+                msg = discord.Embed(title=f"Webhooks for {channel.name}", description="List of webhooks:", color=0x4e5d94)
                 for webhook in hooks:
-                    await ctx.send(f"Name: **{webhook.name}** ID: **{webhook.id}**")
+                    msg.add_field(name=f"Name: {webhook.name}", value=f"*ID: {webhook.id}*", inline=False)
+            await ctx.send(embed=msg)
+        else:
+            await ctx.send("Sorry, this command only works for text channels!")
+
+
+    @commands.command()
+    async def hookurls(self, ctx, targetid: int=1):
+        channel = None
+        if targetid == 1:
+            channel = ctx.channel
+        else:
+            await self.client.wait_until_ready()
+            channel = self.client.get_channel(targetid)
+            if (channel == None):
+                await ctx.send("Channel not found.")
+            return
+
+        permission = channel.permissions_for(ctx.author)
+        permission2 = channel.permissions_for(ctx.guild.me)
+
+        if permission.manage_channels != True:
+            await ctx.send('Error: You do not have the required permission: *Manage channels* for this command!')
+        elif permission2.manage_channels != True:
+            await ctx.send('Error: I not have the required permission: *Manage channels* for this command!')
+        elif permission.manage_webhooks != True:
+            await ctx.send('Error: You do not have the required permission: *Manage webhooks* for this command!')
+        elif permission2.manage_webhooks != True:
+            await ctx.send('Error: I not have the required permission: *Manage webhooks* for this command!')
+        elif isinstance(channel, discord.TextChannel):
+            hooks = await channel.webhooks()
+            msg = None
+            if len(hooks) == 0:
+                msg = discord.Embed(title=f"Error!", description=f"No webhooks in text channel {channel.name}", color=0x8a0707)
+            else:
+                msg = discord.Embed(title=f"Webhooks for {channel.name}", description="List of webhooks:", color=0x4e5d94)
+                for webhook in hooks:
+                    msg.add_field(name=f"Name: {webhook.name}", value=f"*URL: {webhook.url}*", inline=False)
+            await ctx.send(embed=msg)
         else:
             await ctx.send("Sorry, this command only works for text channels!")
 
@@ -113,6 +152,37 @@ class Webhooks(commands.Cog):
                     await webhook.delete()
         else:
             await ctx.send("Sorry, this command only works for text channels!")
+
+    @commands.command()
+    async def addhook(self, ctx, name="Fresh Webhook", targetid: int=1):
+        channel = None
+        if targetid == 1:
+            channel = ctx.channel
+        else:
+            await self.client.wait_until_ready()
+            channel = self.client.get_channel(targetid)
+
+        if (channel == None):
+            await ctx.send("Channel not found.")
+            return
+
+        permission = channel.permissions_for(ctx.author)
+        permission2 = channel.permissions_for(ctx.guild.me)
+
+        if permission.manage_channels != True:
+            await ctx.send('Error: You do not have the required permission: *Manage channels* for this command!')
+        elif permission2.manage_channels != True:
+            await ctx.send('Error: I not have the required permission: *Manage channels* for this command!')
+        elif permission.manage_webhooks != True:
+            await ctx.send('Error: You do not have the required permission: *Manage webhooks* for this command!')
+        elif permission2.manage_webhooks != True:
+            await ctx.send('Error: I not have the required permission: *Manage webhooks* for this command!')
+        elif isinstance(channel, discord.TextChannel):
+            strname = str(name)
+            webhook = await channel.create_webhook(name=strname)
+            msg = discord.Embed(title=f"Webhook {webhook.name} created!", description=f"ID: {webhook.id}", color=0x4e5d94)
+            await ctx.send(embed=msg)
+
 
 
 def setup(client):

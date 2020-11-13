@@ -9,11 +9,13 @@ class Help(commands.Cog):
     @commands.command()
     async def help(self, ctx, filter: str=" "):
         msg = None
+        filter = filter.lower();
         if filter == " ":
-            msg = discord.Embed(title="Warden Commands", description="**Run w.help <CommandName> for more information**", color=0x4e5d94)
+            msg = discord.Embed(title="Warden Command Directory", description="**Run w.help <EntryName> for more information**", color=0x4e5d94)
             msg.add_field(name="channelmanagement", value="Category includes commands that help modify and manage channels", inline=False)
             msg.add_field(name="servermanagement", value="Category that includes commands that help manage your discord server", inline=False)
             msg.add_field(name="moderation", value="Category that includes commands that help manage your discord server", inline=False)
+            msg.add_field(name="Not sure how to get channel ID's for commands?", value="Run w.help ID for assistance!", inline=False)
         elif (filter == "channelmanagement" or filter == "channel_management" or filter == "channel management"):
             msg = discord.Embed(title="Help - Channel Management Category", color=0x4e5d94)
             msg.add_field(name="w.cname", value="<\"Name in quotes\"> <Optional channel ID>", inline=False)
@@ -43,6 +45,11 @@ class Help(commands.Cog):
             msg.add_field(name="w.unlock", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.lockdown", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.unlockdown", value="<Optional channel ID>", inline=False)
+        elif (filter == "ID" or filter == "id" or filter == "i d" or filter == "i_d"):
+            msg = discord.Embed(title="Help - How to get ID's on Desktop or Mobile ", color=0x4e5d94)
+            msg.add_field(name="1) Enable developer mode", value="Go into your discord user settings, and under the appearance tab at the bottom, enable developer mode.", inline=False)
+            msg.add_field(name="2) Right click a channel and click on \"Copy ID\" at the bottom", value="Webhook ID's are found with w.webhooks", inline=False)
+            msg.add_field(name="Task complete", value="You can paste the channel ID where needed now.", inline=False)
         elif (filter == "w.cafktime" or filter == "cafktime"):
             msg = discord.Embed(title="Help - cafktime command", color=0x4e5d94)
             msg.add_field(name="w.cafktime", value="<Time Code>", inline=False)

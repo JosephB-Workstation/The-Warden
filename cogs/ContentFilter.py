@@ -22,7 +22,7 @@ class ContentFilter(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send('Error: You do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.BotMissingPermissions):
-            await ctx.send('Error: I not have the required permission: *Manage Server* for this command!')
+            await ctx.send('Error: I do not have the required permission: *Manage Server* for this command!')
 
 def setup(client):
     client.add_cog(ContentFilter(client))

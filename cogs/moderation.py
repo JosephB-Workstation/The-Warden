@@ -20,8 +20,29 @@ class Moderation(commands.Cog):
             elif ( (not target.top_role <= ctx.author.top_role) and  (not target.top_role <= ctx.guild.me.top_role)):
                 await ctx.send("Error: Neither you or I have a high enough role to kick this user.")
 
+    @commands.command()
+    @commands.has_permissions(ban_members=True)
+    @commands.bot_has_permissions(ban_members=True)
+    async def ban(self, ctx, target: discord.Member):
+        if isinstance(target, discord.Member):
+            if(target.top_role <= ctx.author.top_role and target.top_role <= ctx.guild.me.top_role):
+                await ctx.send(f"**{target.name}** has been banned!");
+                await ctx.guild.ban(target)
+            elif (target.top_role <= ctx.author.top_role and  (not target.top_role <= ctx.guild.me.top_role)):
+                await ctx.send("Error: I do not have a high enough role to kick this user")
+            elif ((not target.top_role <= ctx.author.top_role) and target.top_role <= ctx.guild.me.top_role):
+                await ctx.send("Error: You do not have a high enough role to kick this user")
+            elif ( (not target.top_role <= ctx.author.top_role) and  (not target.top_role <= ctx.guild.me.top_role)):
+                await ctx.send("Error: Neither you or I have a high enough role to kick this user.")
 
-
+    @ban.error
+    async def kick_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.send('Error: You do not have the required permission: *Ban Members* for this command!')
+        if isinstance(error, commands.BotMissingPermissions):
+            await ctx.send('Error: I do not have the required permission: *Ban Members* for this command!')
+        if isinstance(error, commands.CommandInvokeError):
+            await ctx.send('Error: You have reached the rate limit for this command. Apologies for the inconvienence. Please try again later.')
 
     @kick.error
     async def kick_error(self, ctx, error):

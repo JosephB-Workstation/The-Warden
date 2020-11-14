@@ -82,7 +82,7 @@ class GuildEdit(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send('Error: You do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.BotMissingPermissions):
-            await ctx.send('Error: I not have the required permission: *Manage Server* for this command!')
+            await ctx.send('Error: I do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.CommandInvokeError):
             await ctx.send('Error: You have reached the rate limit for this command. Apologies for the inconvienence. Please try again later.')
 
@@ -91,7 +91,7 @@ class GuildEdit(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send('Error: You do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.BotMissingPermissions):
-            await ctx.send('Error: I not have the required permission: *Manage Server* for this command!')
+            await ctx.send('Error: I do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.CommandInvokeError):
             await ctx.send('Error: You have reached the rate limit for this command. Apologies for the inconvienence. Please try again later.')
 
@@ -100,7 +100,7 @@ class GuildEdit(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send('Error: You do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.BotMissingPermissions):
-            await ctx.send('Error: I not have the required permission: *Manage Server* for this command!')
+            await ctx.send('Error: I do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.CommandInvokeError):
             await ctx.send('Error: You have reached the rate limit for this command. Apologies for the inconvienence. Please try again later.')
 
@@ -109,7 +109,7 @@ class GuildEdit(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send('Error: You do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.BotMissingPermissions):
-            await ctx.send('Error: I not have the required permission: *Manage Server* for this command!')
+            await ctx.send('Error: I do not have the required permission: *Manage Server* for this command!')
         if isinstance(error, commands.CommandInvokeError):
             await ctx.send('Error: You have reached the rate limit for this command. Apologies for the inconvienence. Please try again later.')
 

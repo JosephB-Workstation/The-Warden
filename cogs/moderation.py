@@ -10,14 +10,14 @@ class Moderation(commands.Cog):
     @commands.bot_has_permissions(kick_members=True)
     async def kick(self, ctx, target: discord.Member):
         if isinstance(target, discord.Member):
-            if(target.top_role <= ctx.author.top_role and target.top_role <= ctx.guild.me.top_role):
-                await ctx.send(f"**{target.name}** has been kicked!");
+            if(target.top_role < ctx.author.top_role and target.top_role < ctx.guild.me.top_role):
+                await ctx.send(f"**{str(target)}** has been kicked!");
                 await ctx.guild.kick(target)
-            elif (target.top_role <= ctx.author.top_role and  (not target.top_role <= ctx.guild.me.top_role)):
+            elif (target.top_role < ctx.author.top_role and  (not target.top_role < ctx.guild.me.top_role)):
                 await ctx.send("Error: I do not have a high enough role to kick this user")
-            elif ((not target.top_role <= ctx.author.top_role) and target.top_role <= ctx.guild.me.top_role):
+            elif ((not target.top_role < ctx.author.top_role) and target.top_role < ctx.guild.me.top_role):
                 await ctx.send("Error: You do not have a high enough role to kick this user")
-            elif ( (not target.top_role <= ctx.author.top_role) and  (not target.top_role <= ctx.guild.me.top_role)):
+            elif ( (not target.top_role < ctx.author.top_role) and  (not target.top_role < ctx.guild.me.top_role)):
                 await ctx.send("Error: Neither you or I have a high enough role to kick this user.")
 
     @commands.command()
@@ -25,14 +25,14 @@ class Moderation(commands.Cog):
     @commands.bot_has_permissions(ban_members=True)
     async def ban(self, ctx, target: discord.Member):
         if isinstance(target, discord.Member):
-            if(target.top_role <= ctx.author.top_role and target.top_role <= ctx.guild.me.top_role):
-                await ctx.send(f"**{target.name}** has been banned!");
+            if(target.top_role < ctx.author.top_role and target.top_role < ctx.guild.me.top_role):
+                await ctx.send(f"**{str(target)}** has been banned!");
                 await ctx.guild.ban(target)
-            elif (target.top_role <= ctx.author.top_role and  (not target.top_role <= ctx.guild.me.top_role)):
+            elif (target.top_role < ctx.author.top_role and  (not target.top_role < ctx.guild.me.top_role)):
                 await ctx.send("Error: I do not have a high enough role to kick this user")
-            elif ((not target.top_role <= ctx.author.top_role) and target.top_role <= ctx.guild.me.top_role):
+            elif ((not target.top_role < ctx.author.top_role) and target.top_role < ctx.guild.me.top_role):
                 await ctx.send("Error: You do not have a high enough role to kick this user")
-            elif ( (not target.top_role <= ctx.author.top_role) and  (not target.top_role <= ctx.guild.me.top_role)):
+            elif ( (not target.top_role < ctx.author.top_role) and  (not target.top_role < ctx.guild.me.top_role)):
                 await ctx.send("Error: Neither you or I have a high enough role to kick this user.")
 
     @ban.error

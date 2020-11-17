@@ -12,34 +12,37 @@ class Help(commands.Cog):
         filter = filter.lower();
         if filter == " ":
             msg = discord.Embed(title="Warden Command Directory", description="**Run w.help <EntryName> for more information**", color=0x4e5d94)
-            msg.add_field(name="channelmanagement", value="Category includes commands that help modify and manage channels", inline=False)
-            msg.add_field(name="servermanagement", value="Category that includes commands that help manage your discord server", inline=False)
-            msg.add_field(name="moderation", value="Category that includes commands that help manage your discord server", inline=False)
+            msg.add_field(name="channelmanagement", value="Category includes commands that helps modify and manage channels", inline=False)
+            msg.add_field(name="servermanagement", value="Category that includes commands that helps manage your discord server", inline=False)
+            msg.add_field(name="moderation", value="Category that includes commands that helps moderate the users in your server", inline=False)
             msg.add_field(name="Not sure how to get channel ID's for commands?", value="Run w.help ID for assistance!", inline=False)
         elif (filter == "channelmanagement" or filter == "channel_management" or filter == "channel management"):
             msg = discord.Embed(title="Help - Channel Management Category", color=0x4e5d94)
-            msg.add_field(name="w.cname", value="<\"Name in quotes\"> <Optional channel ID>", inline=False)
-            msg.add_field(name="w.ctopic", value="<\"Topic in quotes\"> <Optional channel ID>", inline=False)
-            msg.add_field(name="w.cslow", value="<Time in seconds> <Optional channel ID>", inline=False)
+            msg.add_field(name="Carrots (< and >) seperate command arguments", value="You shouldn't include them in commands!", inline=False)
+            msg.add_field(name="w.cname - change name", value="<\"Name in quotes\"> <Optional channel ID>", inline=False)
+            msg.add_field(name="w.ctopic - change topic", value="<\"Topic in quotes\"> <Optional channel ID>", inline=False)
+            msg.add_field(name="w.cslow - change slowmode", value="<Time in seconds> <Optional channel ID>", inline=False)
             msg.add_field(name="w.nsfw", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.bitrate", value="<Bitrate between 8-96 in kbps> <Mandatory channel ID>", inline=False)
             msg.add_field(name="w.userlimit", value="<User count between 0-99> <Mandatory channel ID>", inline=False)
             msg.add_field(name="w.webhooks", value="<Optional Channel ID>", inline=False)
-            msg.add_field(name="w.hookurls", value="<Optional Channel ID>", inline=False)
-            msg.add_field(name="w.addhook", value="<\"Optional name in quotes\"> <Optional Channel ID>", inline=False)
-            msg.add_field(name="w.delhook", value="<Webhook ID> <Optional Channel ID>", inline=False)
-            msg.add_field(name="w.purgehooks", value="<Optional Channel ID>", inline=False)
+            msg.add_field(name="w.hookurls - webhook urls", value="<Optional Channel ID>", inline=False)
+            msg.add_field(name="w.addhook - add webhook", value="<\"Optional name in quotes\"> <Optional Channel ID>", inline=False)
+            msg.add_field(name="w.delhook - delete webhook", value="<Webhook ID> <Optional Channel ID>", inline=False)
+            msg.add_field(name="w.purgehooks - purge webhooks", value="<Optional Channel ID>", inline=False)
         elif (filter == "servermanagement" or filter == "server_management" or filter == "server management"):
             msg = discord.Embed(title="Help - Server Management Category", color=0x4e5d94)
-            msg.add_field(name="w.delinv", value="<No Arguments>", inline=False)
-            msg.add_field(name="w.cverify", value="<VerificationLevel>", inline=False)
-            msg.add_field(name="w.cfilter", value="<FilterLevel>", inline=False)
-            msg.add_field(name="w.csname", value="<\"New Server Name in quotes\">", inline=False)
-            msg.add_field(name="w.cregion", value="<New Voice Region>", inline=False)
-            msg.add_field(name="w.cafkch", value="<Voice channel ID>", inline=False)
-            msg.add_field(name="w.cafktime", value="<Time Code>", inline=False)
+            msg.add_field(name="Carrots (< and >) seperate command arguments", value="You shouldn't include them in commands!", inline=False)
+            msg.add_field(name="w.delinv - delete invites", value="<No Arguments>", inline=False)
+            msg.add_field(name="w.cverify - change verification", value="<VerificationLevel>", inline=False)
+            msg.add_field(name="w.cfilter - change content filter", value="<FilterLevel>", inline=False)
+            msg.add_field(name="w.csname - change server name", value="<\"New Server Name in quotes\">", inline=False)
+            msg.add_field(name="w.cregion - change server region", value="<New Voice Region>", inline=False)
+            msg.add_field(name="w.cafkch - change afk channel", value="<Voice channel ID>", inline=False)
+            msg.add_field(name="w.cafktime - change afk timer", value="<Time Code>", inline=False)
         elif (filter == "moderation"):
             msg = discord.Embed(title="Help - Moderation Category", color=0x4e5d94)
+            msg.add_field(name="Carrots (< and >) seperate command arguments", value="You shouldn't include them in commands!", inline=False)
             msg.add_field(name="w.clear", value="<Amount of messages to clear, default 500> <Optional channel ID>")
             msg.add_field(name="w.lock", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.unlock", value="<Optional channel ID>", inline=False)
@@ -50,13 +53,13 @@ class Help(commands.Cog):
             msg.add_field(name="1) Enable developer mode", value="Go into your discord user settings, and under the appearance tab at the bottom, enable developer mode.", inline=False)
             msg.add_field(name="2) Right click a channel and click on \"Copy ID\" at the bottom", value="Webhook ID's are found with w.webhooks", inline=False)
             msg.add_field(name="Task complete", value="You can paste the channel ID where needed now.", inline=False)
-        elif (filter == "w.cafktime" or filter == "cafktime"):
+        elif (filter == "w.cafktime" or filter == "cafktime" or filter =="inactive timer"):
             msg = discord.Embed(title="Help - cafktime command", color=0x4e5d94)
             msg.add_field(name="w.cafktime", value="<Time Code>", inline=False)
             msg.add_field(name="Description: ", value="Changes the afk/inactive timer of the server", inline=False)
             msg.add_field(name="Permissions Needed: ", value="Manage Server", inline=False)
             msg.add_field(name="Voice channel ID: ", value="The valid time code to change the afk timer to. Valid entries include: 1min, 5min, 15min, 30min, and 1hour", inline=False)
-        elif (filter == "w.cafkch" or filter == "cafkch"):
+        elif (filter == "w.cafkch" or filter == "cafkch" or filter == "inactive channel"):
             msg = discord.Embed(title="Help - cafkch command", color=0x4e5d94)
             msg.add_field(name="w.cafkch", value="<Server voice channel ID>", inline=False)
             msg.add_field(name="Description: ", value="Changes the afk/inactive channel of the server", inline=False)
@@ -107,14 +110,14 @@ class Help(commands.Cog):
             msg.add_field(name="Description:", value="Deletes all webhooks from a given channel", inline=False)
             msg.add_field(name="Permissions Needed: ", value="Manage Channels and Manage Webhooks", inline=False)
             msg.add_field(name="Optional ID:", value="Channel ID is the channel id of the channel you want to purge webhooks from. If that is not set, it will purge the webhooks of the current channel.", inline=False)
-        elif (filter == "w.cverify" or filter == "cverify"):
+        elif (filter == "w.cverify" or filter == "cverify" or filter == "verification"):
             msg = discord.Embed(title="Help - cverify command", color=0x4e5d94)
             msg.add_field(name="w.cverify", value="<VerificationLevel>", inline=False)
             msg.add_field(name="Description:", value="Changes the necessary verification level of your server.", inline=False)
             msg.add_field(name="Permissions Needed: ", value="Manage Server", inline=False)
             msg.add_field(name="Level:", value="The level of verification you want to lock chat messages on the server behind", inline=False)
             msg.add_field(name="Valid values:", value="none, low, medium, high, table_flip, extreme, double_table_flip, very_high, or highest.")
-        elif (filter == "w.cfilter" or filter == "cfilter"):
+        elif (filter == "w.cfilter" or filter == "cfilter" or filter == "filter"):
             msg = discord.Embed(title="Help - cfilter command", color=0x4e5d94)
             msg.add_field(name="w.cfilter", value="<FilterLevel>", inline=False)
             msg.add_field(name="Description:", value="Deletes a given number of messages from a text channel", inline=False)
@@ -142,7 +145,7 @@ class Help(commands.Cog):
             msg.add_field(name="Permissions Needed: ", value="Manage Channel", inline=False)
             msg.add_field(name="Topic:", value="Topic is the desired topic of the text channel", inline=False)
             msg.add_field(name="Optional ID:", value="Channel ID is the channel id of the channel you want to change. If that is not set, it will change the topic of the current channel.", inline=False)
-        elif (filter == "w.cslow" or filter == "cslow"):
+        elif (filter == "w.cslow" or filter == "cslow" or filter == "slowmode"):
             msg = discord.Embed(title="Help - cslow command", color=0x4e5d94)
             msg.add_field(name="w.cslow", value="<Time in seconds> <Optional channel ID>", inline=False)
             msg.add_field(name="Description:", value="Changes text channel slow mode timer.", inline=False)

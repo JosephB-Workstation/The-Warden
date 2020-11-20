@@ -44,6 +44,8 @@ class Help(commands.Cog):
             msg = discord.Embed(title="Help - Moderation Category", color=0x4e5d94)
             msg.add_field(name="Carrots (< and >) seperate command arguments", value="You shouldn't include them in commands!", inline=False)
             msg.add_field(name="w.clear", value="<Amount of messages to clear, default 500> <Optional channel ID>", inline=False)
+            msg.add_field(name="w.kick", value="<Member>", inline=False)
+            msg.add_field(name="w.ban", value="<Member>", inline=False)
             msg.add_field(name="w.changenick", value="<Member> <New Nickname>", inline=False)
             msg.add_field(name="w.lock", value="<Optional channel ID>", inline=False)
             msg.add_field(name="w.unlock", value="<Optional channel ID>", inline=False)
@@ -55,6 +57,16 @@ class Help(commands.Cog):
             msg.add_field(name="Description: ", value="Allows you to change nicknames of users.", inline=False)
             msg.add_field(name="Member: ", value="@ the user in question", inline=False)
             msg.add_field(name="New Nickname:", value="The new nickname the user should have", inline=False);
+        elif (filter == "w.ban" or filter == "ban"):
+            msg = discord.Embed(title="Help - ban command", color=0x4e5d94)
+            msg.add_field(name="w.ban", value="<Member>", inline=False)
+            msg.add_field(name="Description: ", value="Allows you ban users from the server.", inline=False)
+            msg.add_field(name="Member: ", value="@ the user to ban", inline=False)
+        elif (filter == "w.kick" or filter == "kick"):
+            msg = discord.Embed(title="Help - kick command", color=0x4e5d94)
+            msg.add_field(name="w.kick", value="<Member>", inline=False)
+            msg.add_field(name="Description: ", value="Allows you kick users from the server.", inline=False)
+            msg.add_field(name="Member: ", value="@ the user to kick", inline=False)
         elif (filter == "ID" or filter == "id" or filter == "i d" or filter == "i_d"):
             msg = discord.Embed(title="Help - How to get ID's on Desktop or Mobile ", color=0x4e5d94)
             msg.add_field(name="1) Enable developer mode", value="Go into your discord user settings, and under the appearance tab at the bottom, enable developer mode.", inline=False)

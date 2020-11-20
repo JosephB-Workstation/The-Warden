@@ -52,7 +52,7 @@ class Clear(commands.Cog):
                     counter = 0
             await ctx.send(f'Deleted **{delamount}** messages from **{channel.name}** for **{str(ctx.author)}**!')
         else:
-            await ctx.send("Sorry, this command only works in text channels!")
+            await ctx.send("Error: Sorry, this command only works in text channels!")
 
 
 def setup(client):

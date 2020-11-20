@@ -35,7 +35,7 @@ class NSFW(commands.Cog):
                 await channel.edit(nsfw=True)
                 await ctx.send(f"**{channel.name}** is now marked as NSFW!")
         else:
-            await ctx.send("Error: Sorry, but this command only works on text channels!")
+            await ctx.send("Error: Sorry, this command only works on text channels!")
 
 
 def setup(client):

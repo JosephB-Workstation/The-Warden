@@ -45,7 +45,7 @@ class Redescribe(commands.Cog):
                 await channel.edit(topic=description)
                 await ctx.send(f'**{channel.name}** has had it\'s topic changed!')
             else:
-                await ctx.send("Voice channels do not have topics to edit!")
+                await ctx.send("Error: Sorry, this command only works in text channels!")
 
 
     @commands.command()

@@ -40,7 +40,7 @@ class Webhooks(commands.Cog):
                     msg.add_field(name=f"Name: {webhook.name}", value=f"*ID: {webhook.id}*", inline=False)
             await ctx.send(embed=msg)
         else:
-            await ctx.send("Sorry, this command only works for text channels!")
+            await ctx.send("Error: Sorry, this command only works for text channels!")
 
 
     @commands.command()
@@ -77,7 +77,7 @@ class Webhooks(commands.Cog):
                     msg.add_field(name=f"Name: {webhook.name}", value=f"*URL: {webhook.url}*", inline=False)
             await ctx.send(embed=msg)
         else:
-            await ctx.send("Sorry, this command only works for text channels!")
+            await ctx.send("Error: Sorry, this command only works for text channels!")
 
 
     @commands.command()
@@ -116,7 +116,7 @@ class Webhooks(commands.Cog):
                         return;
                 await ctx.send("Webhook not found! Run w.webhooks to get a list of webhooks and their IDs!")
         else:
-            await ctx.send("Sorry, this command only works for text channels!")
+            await ctx.send("Error: Sorry, this command only works for text channels!")
 
     @commands.command()
     async def purgehooks(self, ctx, targetid: int=1):
@@ -151,7 +151,7 @@ class Webhooks(commands.Cog):
                 for webhook in hooks:
                     await webhook.delete()
         else:
-            await ctx.send("Sorry, this command only works for text channels!")
+            await ctx.send("Error: Sorry, this command only works for text channels!")
 
     @commands.command()
     async def addhook(self, ctx, name="Fresh Webhook", targetid: int=1):

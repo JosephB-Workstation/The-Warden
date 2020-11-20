@@ -44,7 +44,7 @@ class GuildEdit(commands.Cog):
             await guild.edit(afk_channel=channel)
             await ctx.send(f"Server inactive channel changed to **{channel.name}**!")
         else:
-            await ctx.send("Sorry, but this command requires the ID of a voice channel!")
+            await ctx.send("Error: Sorry, but this command requires the ID of a voice channel!")
 
     @commands.command()
     @commands.has_permissions(manage_guild=True)

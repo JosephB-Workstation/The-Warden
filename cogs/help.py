@@ -68,7 +68,7 @@ class Help(commands.Cog):
             msg.add_field(name="Description: ", value="Allows you kick users from the server.", inline=False)
             msg.add_field(name="Member: ", value="@ the user to kick", inline=False)
         elif (filter == "ID" or filter == "id" or filter == "i d" or filter == "i_d"):
-            msg = discord.Embed(title="Help - How to get ID's on Desktop or Mobile ", color=0x4e5d94)
+            msg = discord.Embed(title="Help - How to get ID's on Desktop or Mobile, step by step", color=0x4e5d94)
             msg.add_field(name="1) Enable developer mode", value="Go into your discord user settings, and under the appearance tab at the bottom, enable developer mode.", inline=False)
             msg.add_field(name="2) Right click a channel and click on \"Copy ID\" at the bottom", value="Webhook ID's are found with w.webhooks", inline=False)
             msg.add_field(name="Task complete", value="You can paste the channel ID where needed now.", inline=False)
@@ -135,14 +135,14 @@ class Help(commands.Cog):
             msg.add_field(name="Description:", value="Changes the necessary verification level of your server.", inline=False)
             msg.add_field(name="Permissions Needed: ", value="Manage Server", inline=False)
             msg.add_field(name="Level:", value="The level of verification you want to lock chat messages on the server behind", inline=False)
-            msg.add_field(name="Valid values:", value="none, low, medium, high, table_flip, extreme, double_table_flip, very_high, or highest.")
+            msg.add_field(name="Valid values:", value="0, 1, 2, 3, 4, none, low, medium, high, table_flip, extreme, double_table_flip, very_high, or highest.")
         elif (filter == "w.cfilter" or filter == "cfilter" or filter == "filter"):
             msg = discord.Embed(title="Help - cfilter command", color=0x4e5d94)
             msg.add_field(name="w.cfilter", value="<FilterLevel>", inline=False)
             msg.add_field(name="Description:", value="Deletes a given number of messages from a text channel", inline=False)
             msg.add_field(name="Permissions Needed: ", value="Manage Server", inline=False)
             msg.add_field(name="Level:", value="The level of content filtering you'd like on your server", inline=False)
-            msg.add_field(name="Valid values:", value="disabled, no_role, or all_members")
+            msg.add_field(name="Valid values:", value="0, 1, 2, disabled, no_role, or all_members")
         elif (filter == "w.clear" or filter == "clear"):
             msg = discord.Embed(title="Help - clear command", color=0x4e5d94)
             msg.add_field(name="w.clear", value="<Amount of messages> <Optional Channel ID>", inline=False)

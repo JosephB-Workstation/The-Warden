@@ -11,7 +11,19 @@ class Verification(commands.Cog):
     @commands.bot_has_permissions(manage_guild=True)
     async def cverify(self, ctx, verificationlevel="none"):
         guild = ctx.guild
-        if verificationlevel == "highest":
+        if verificationlevel == "0":
+            await guild.edit(verification_level=discord.VerificationLevel["none"])
+            await ctx.send("Guild verification level set to **None**")
+        elif verificationlevel == "1":
+            await guild.edit(verification_level=discord.VerificationLevel["low"])
+            await ctx.send("Guild verification level set to **Low**")
+        elif verificationlevel == "2":
+            await guild.edit(verification_level=discord.VerificationLevel["medium"])
+            await ctx.send("Guild verification level set to **Medium**")
+        elif verificationlevel == "3":
+            await guild.edit(verification_level=discord.VerificationLevel["high"])
+            await ctx.send("Guild verification level set to **High**")
+        elif verificationlevel == "highest" or verificationlevel == "4":
             await guild.edit(verification_level=discord.VerificationLevel["very_high"])
             await ctx.send("Guild verification level set to **Highest**")
         elif verificationlevel == "none" or verificationlevel == "low" or verificationlevel == "medium" or verificationlevel == "high" or verificationlevel == "table_flip" or verificationlevel == "extreme" or verificationlevel == "double_table_flip" or verificationlevel == "very_high":

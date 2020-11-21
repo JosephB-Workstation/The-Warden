@@ -11,8 +11,17 @@ class ContentFilter(commands.Cog):
     @commands.bot_has_permissions(manage_guild=True)
     async def cfilter(self, ctx, filterLevel="disabled"):
         guild = ctx.guild
-        if filterLevel == "disabled" or filterLevel == "no_role" or filterLevel == "all_members":
-            await guild.edit(explicit_content_filter =discord.ContentFilter[filterLevel])
+        if filterLevel == "0":
+            await guild.edit(explicit_content_filter=discord.ContentFilter["disabled"])
+            await ctx.send(f"Guild content filter set to **Disabled**!")
+        elif filterLevel == "1":
+            await guild.edit(explicit_content_filter=discord.ContentFilter["no_role"])
+            await ctx.send(f"Guild content filter set to **No Role**!")
+        elif filterLevel == "2":
+            await guild.edit(explicit_content_filter=discord.ContentFilter["all_members"])
+            await ctx.send(f"Guild content filter set to **All Members**!")
+        elif filterLevel == "disabled" or filterLevel == "no_role" or filterLevel == "all_members":
+            await guild.edit(explicit_content_filter=discord.ContentFilter[filterLevel])
             await ctx.send(f"Guild content filter set to **{filterLevel}**!")
         else:
             await ctx.send("Invalid content filter! See \"w.help cfilter\" for valid entries!")
